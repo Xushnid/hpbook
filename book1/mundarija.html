@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mundarija</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="light-mode text-medium">
+    <header class="header">
+        <div class="nav-left">
+            <button class="nav-btn" id="prevBtn">
+                <span>←</span>
+                <span>Orqaga</span>
+            </button>
+        </div>
+        
+     <div class="nav-center">
+    <button class="nav-btn" id="tocBtn">
+        <span>📋</span>
+       
+    </button>
+    <button class="nav-btn" id="zoomOut">
+        <span>🔍-</span>
+    </button>
+    <button class="nav-btn" id="zoomIn">
+        <span>🔍+</span>
+    </button>
+    <!-- YANGI TUGMA -->
+    <button class="nav-btn" id="alphabetBtn">
+        <span>🔤</span>
+        <span id="alphabetText">Кир</span>
+    </button>
+    <button class="nav-btn" id="themeBtn">
+        <span>🌓</span>
+       
+    </button>
+</div>
+        
+        <div class="nav-right">
+            <button class="nav-btn" id="nextBtn">
+                <span>Keyingi</span>
+                <span>→</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+      <!-- BOOKMARK XABAR -->
+<div id="bookmarkMessage" class="bookmark-message hp-theme">
+    <div class="bookmark-inner">
+        <div>
+            
+            <button id="bookmarkContinue" class="bookmark-continue">Davom ettirish</button>
+        </div>
+        <button id="bookmarkClose" class="bookmark-close">×</button>
+    </div>
+</div>
+
+
+        <!-- Mundarija -->
+        <h1> Mundarija</h1>
+        
+        <ul class="table-of-contents">
+           <li>
+    <a href="1.html">
+        <strong>Bob-1:</strong> ODAMOVILAR XIYOBONIDAGI 4-UY
+    </a>
+</li>
+<li>
+    <a href="2.html">
+        <strong>Bob-2:</strong> G'OYIB BO'LGAN OYNA DEVOR
+    </a>
+</li>
+<li>
+    <a href="3.html">
+        <strong>Bob-3:</strong> HECH QAERDAN KELGAN XATLAR
+    </a>
+</li>
+<li>
+    <a href="4.html">
+        <strong>Bob-4:</strong> MAKTAB QOROVULI
+    </a>
+</li>
+<li>
+    <a href="5.html">
+        <strong>Bob-5:</strong> DIAGON XIYOBONI
+    </a>
+</li>
+<li>
+    <a href="6.html">
+        <strong>Bob-6:</strong> TO'QQIZ BUTUN TO'RTDAN UCHINCHI PLATFORMADAN JO'NAYDIGAN POEZD
+    </a>
+</li>
+<li>
+    <a href="7.html">
+        <strong>Bob-7:</strong> SARALOVCHI SHLYAPA
+    </a>
+</li>
+<li>
+    <a href="8.html">
+        <strong>Bob-8:</strong> SEHRLI DAMLAMALAR TAYYORLASH FANI PROFESSORI
+    </a>
+</li>
+<li>
+    <a href="9.html">
+        <strong>Bob-9:</strong> TUN YARMIDAGI DUEL
+    </a>
+</li>
+<li>
+    <a href="10.html">
+        <strong>Bob-10:</strong> XELLOUIN
+    </a>
+</li>
+<li>
+    <a href="11.html">
+        <strong>Bob-11:</strong> KVIDDISH
+    </a>
+</li>
+<li>
+    <a href="12.html">
+        <strong>Bob-12:</strong> KO'NGILDAGI ORZULAR KO'ZGUSI
+    </a>
+</li>
+<li>
+    <a href="13.html">
+        <strong>Bob-13:</strong> NIKOLAS FLAMEL
+    </a>
+</li>
+<li>
+    <a href="14.html">
+        <strong>Bob-14:</strong> DANDON BELLI NORVEG AJDARI
+    </a>
+</li>
+<li>
+    <a href="15.html">
+        <strong>Bob-15:</strong> MAN ETILGAN O'RMON
+    </a>
+</li>
+<li>
+    <a href="16.html">
+        <strong>Bob-16:</strong> ERTO'LADAGI OMBOR
+    </a>
+</li>
+<li>
+    <a href="17.html">
+        <strong>Bob-17:</strong> IKKI YUZLI ODAM
+    </a>
+</li>
+			           
+        </ul>
+    </main>
+
+    <script src="../js/script.js"></script>
+	<script>/* === IKONALAR JOYLASHUVI + TASODIFIY ANIMATSIYA ===================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const box   = document.getElementById('bookmarkMessage');
+    const kinds = ['glasses','scar'];
+    const N     = 14;                    // nechta ikonacha
+
+    for(let i=0;i<N;i++){
+        const s   = document.createElement('span');
+        s.className = `hp-icon ${kinds[Math.random()<.5?0:1]}`;
+
+        /* Tasodifiy statik joylashuv */
+        s.style.top       = `${Math.random()*100}%`;
+        s.style.left      = `${Math.random()*100}%`;
+        s.style.transform = `translate(-50%,-50%) rotate(${Math.random()*360}deg)`;
+
+        /* === YANGI QATORLAR: tezlik va kechikishni tasodifiy tanlaymiz === */
+        const dur   = 14 + Math.random()*12;          // 14-26 s oralig‘ida
+        const delay = -Math.random()*dur;             // sahifa yuklanishi bn darhol “jonlansin”
+        s.style.animationDuration = `${dur}s`;
+        s.style.animationDelay    = `${delay}s`;
+
+        box.appendChild(s);
+    }
+});
+
+</script>
+</body>
+</html>

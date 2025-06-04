@@ -1,0 +1,730 @@
+/* Reset va asosiy stillar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Rang rejimlari */
+.light-mode {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+}
+
+.book-mode {
+    background-color: #f4f1e8;
+    color: #2c2c2c;
+}
+
+/* Header stillar */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 1px solid;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.light-mode .header {
+    background-color: #f8f9fa;
+    border-bottom-color: #dee2e6;
+}
+
+.dark-mode .header {
+    background-color: #2d2d2d;
+    border-bottom-color: #444444;
+}
+
+.book-mode .header {
+    background-color: #f0ede4;
+    border-bottom-color: #d4c5a0;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.nav-left {
+    justify-content: flex-start;
+}
+
+.nav-right {
+    justify-content: flex-end;
+}
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 2;
+}
+
+/* Tugmalar */
+.nav-btn {
+    background: none;
+    border: 1px solid;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 14px;
+    min-height: 36px;
+    min-width: 36px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.nav-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.light-mode .nav-btn {
+    border-color: #6c757d;
+    color: #495057;
+    background-color: #ffffff;
+}
+
+.light-mode .nav-btn:hover {
+    background-color: #e9ecef;
+    border-color: #495057;
+}
+
+.dark-mode .nav-btn {
+    border-color: #6c757d;
+    color: #adb5bd;
+    background-color: #343a40;
+}
+
+.dark-mode .nav-btn:hover {
+    background-color: #495057;
+    border-color: #adb5bd;
+}
+
+.book-mode .nav-btn {
+    border-color: #8b7355;
+    color: #5d4e37;
+    background-color: #f7f4ed;
+}
+
+.book-mode .nav-btn:hover {
+    background-color: #e8e2d5;
+    border-color: #5d4e37;
+}
+
+/* Asosiy kontent */
+.main-content {
+    margin-top: 80px;
+    padding: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: calc(100vh - 80px);
+    width: 100%;
+}
+
+/* Bookmark habar */
+.bookmark-message {
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideDown 0.3s ease;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.bookmark-message.hidden {
+    display: none;
+}
+
+.bookmark-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    min-width: 30px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bookmark-close:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.bookmark-continue {
+    background-color: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.2s ease;
+}
+
+.bookmark-continue:hover {
+    background-color: rgba(255,255,255,0.3);
+}
+
+/* === HARRY POTTER BOOKMARK THEME ============================== */
+.bookmark-message.hp-theme{
+    background:#2e1a47;          /* Hogwarts-night violet  */
+    color:#ffd700;               /* Gryffindor-gold text   */
+    border:3px solid #ffd700;
+    border-radius:10px;
+    position:relative;
+    overflow:hidden;             /* ikonalarni yopishtirish uchun */
+    padding:20px;
+    box-shadow:0 0 15px rgba(255,215,0,.45);
+}
+
+/* Xabar matni konteyneri (ichidagi flex tartib saqlab qolinsin) */
+.bookmark-message .bookmark-inner{
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:12px;width:100%;position:relative;z-index:2;
+}
+
+/* Tugmalarni pottercha ko‘rinishga keltiramiz */
+.bookmark-continue,
+.bookmark-close{
+    font-family:'Georgia',serif;
+    font-weight:bold;
+    color:#ffd700;border:2px solid #ffd700;
+    background:#422800;
+    padding:8px 14px;border-radius:8px;cursor:pointer;
+    transition:.2s;
+    box-shadow:0 0 8px rgba(255,215,0,.4);
+}
+.bookmark-continue:hover,
+.bookmark-close:hover{background:#5a3900;}
+
+/* === FON BO‘YLAB YURADIGAN IKONALAR =========================== */
+.hp-icon{
+    position:absolute; width:26px; height:26px; opacity:.32;
+    background-size:contain!important; background-repeat:no-repeat;
+    pointer-events:none;                 /* bosishni bloklaydi       */
+}
+.hp-icon.glasses{
+    background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 52'>\
+<circle cx='22' cy='26' r='18' fill='none' stroke='%23ffd700' stroke-width='6'/>\
+<circle cx='78' cy='26' r='18' fill='none' stroke='%23ffd700' stroke-width='6'/>\
+<line x1='40' y1='26' x2='60' y2='26' stroke='%23ffd700' stroke-width='6'/>\
+</svg>");
+}
+.hp-icon.scar{
+    background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 60'>\
+<polyline points='12,0 2,18 18,36 6,60' fill='none' stroke='%23ffd700' stroke-width='6'/>\
+</svg>");
+}
+
+
+/* === HARRY POTTER DRIFT ANIMATION =================================== */
+@keyframes hp-drift{
+    0%   { transform: translate(-50%,-50%)   rotate(0deg); }
+    50%  { transform: translate(calc(-50% + 25px),
+                                calc(-50% + 15px)) rotate(180deg);}
+    100% { transform: translate(-50%,-50%)   rotate(360deg); }
+}
+
+/* Iconlar uchun umumiy animatsiya xossalari */
+.hp-icon{
+    animation-name:hp-drift;          /* keyframe nomi               */
+    animation-timing-function:linear; /* tekis harakat               */
+    animation-iteration-count:infinite;
+    animation-direction:alternate;   /* borib-keladigan drift       */
+}
+
+
+
+
+/* === GLOBAL “HARRY POTTER” PAGE BACKGROUND ====================== */
+
+/* Fonga ikonalar joylanadigan qatlam */
+.hp-bg-wrapper{
+    position:fixed; inset:0;
+    z-index:-1;                 /* kontent ostida turadi          */
+    overflow:hidden;
+    pointer-events:none;
+}
+
+/* Avvalgi .hp-icon va @keyframes hp-drift bor deb faraz qilamiz; 
+   yo‘q bo‘lsa, bookmark uchun qo‘shgan kodni shu faylga ko‘chirib keling */
+
+/* Index sahifasi uchun biroz katta va yanada nozik ko‘rinish */
+.hp-bg-wrapper .hp-icon{width:34px;height:34px;opacity:.18}
+
+/* Rangni rejimga qarab yumshatish */
+.light-mode .hp-icon{opacity:.12}
+.book-mode  .hp-icon{opacity:.15}
+
+
+
+
+
+/* Mundarija stillar */
+.table-of-contents {
+    list-style: none;
+    width: 100%;
+}
+
+.table-of-contents li {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.light-mode .table-of-contents li {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.light-mode .table-of-contents li:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.dark-mode .table-of-contents li {
+    background-color: #2d2d2d;
+    border-color: #444444;
+}
+
+.dark-mode .table-of-contents li:hover {
+    background-color: #3d3d3d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.book-mode .table-of-contents li {
+    background-color: #f7f4ed;
+    border-color: #d4c5a0;
+}
+
+.book-mode .table-of-contents li:hover {
+    background-color: #f2eedf;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(139,115,85,0.2);
+}
+
+.table-of-contents a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Matn o'lchamlari */
+.text-xsmall {
+    font-size: 12px;
+}
+
+.text-xsmall .table-of-contents a {
+    font-size: 14px;
+}
+
+.text-small {
+    font-size: 14px;
+}
+
+.text-small .table-of-contents a {
+    font-size: 16px;
+}
+
+.text-medium {
+    font-size: 16px;
+}
+
+.text-medium .table-of-contents a {
+    font-size: 18px;
+}
+
+.text-large {
+    font-size: 18px;
+}
+
+.text-large .table-of-contents a {
+    font-size: 20px;
+}
+
+.text-xlarge {
+    font-size: 20px;
+}
+
+.text-xlarge .table-of-contents a {
+    font-size: 22px;
+}
+
+.text-xxlarge {
+    font-size: 22px;
+}
+
+.text-xxlarge .table-of-contents a {
+    font-size: 24px;
+}
+
+/* Matn kontenti */
+.chapter-content {
+    line-height: 1.8;
+    text-align: justify;
+    width: 100%;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+.chapter-content h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 0;
+    line-height: 1.3;
+    font-size: 1.8em;
+}
+
+.chapter-content h2 {
+    text-align: left;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    font-size: 1.4em;
+}
+
+.chapter-content h3 {
+    text-align: left;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    font-size: 1.2em;
+}
+
+.chapter-content p {
+    margin-bottom: 15px;
+    text-align: justify;
+    text-indent: 0;
+}
+
+.chapter-content em {
+    font-style: italic;
+    background-color: rgba(128, 128, 128, 0.1);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Sahifa sarlavhasi */
+.main-content h1:first-child {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid;
+}
+
+.light-mode .main-content h1:first-child {
+    border-bottom-color: #dee2e6;
+}
+
+.dark-mode .main-content h1:first-child {
+    border-bottom-color: #444444;
+}
+
+.book-mode .main-content h1:first-child {
+    border-bottom-color: #d4c5a0;
+}
+
+/* Animatsiyalar */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive - Planshet */
+@media (max-width: 1024px) {
+    .main-content {
+        max-width: 100%;
+        padding: 20px 15px;
+    }
+}
+
+/* Responsive - Kichik planshet */
+@media (max-width: 768px) {
+    .header {
+        padding: 0 15px;
+        height: 55px;
+    }
+    
+    .nav-center {
+        gap: 6px;
+    }
+    
+    .nav-btn {
+        padding: 6px 10px;
+        font-size: 13px;
+        min-height: 34px;
+        min-width: 34px;
+    }
+    
+    .nav-btn span:not(:first-child) {
+        display: none;
+    }
+    
+    .main-content {
+        margin-top: 75px;
+        padding: 15px 12px;
+    }
+    
+    .table-of-contents li {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+    
+    .bookmark-message {
+        padding: 12px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .bookmark-continue {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+}
+
+/* Responsive - Mobil */
+@media (max-width: 480px) {
+    .header {
+        padding: 0 10px;
+        height: 50px;
+    }
+    
+    .nav-center {
+        gap: 4px;
+    }
+    
+    .nav-btn {
+        padding: 5px 8px;
+        font-size: 12px;
+        min-height: 32px;
+        min-width: 32px;
+        border-radius: 4px;
+    }
+    
+    .nav-btn span:not(:first-child) {
+        display: none;
+    }
+    
+    .main-content {
+        margin-top: 70px;
+        padding: 15px 10px;
+    }
+    
+    .chapter-content {
+        text-align: justify;
+        hyphens: auto;
+        word-break: break-word;
+    }
+    
+    .chapter-content h1 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .chapter-content h2 {
+        font-size: 1.3em;
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+    
+    .chapter-content h3 {
+        font-size: 1.1em;
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .table-of-contents li {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .bookmark-message {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .bookmark-continue {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+}
+
+/* Juda kichik mobil */
+@media (max-width: 360px) {
+    .header {
+        padding: 0 8px;
+    }
+    
+    .nav-center {
+        gap: 3px;
+    }
+    
+    .nav-btn {
+        padding: 4px 6px;
+        min-height: 30px;
+        min-width: 30px;
+        font-size: 11px;
+    }
+    
+    .main-content {
+        padding: 12px 8px;
+    }
+    
+    .table-of-contents li {
+        padding: 8px;
+    }
+}
+
+/* Touch qurilmalar uchun */
+@media (hover: none) and (pointer: coarse) {
+    .nav-btn:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .nav-btn:active {
+        transform: scale(0.95);
+        transition: transform 0.1s;
+    }
+    
+    .table-of-contents li:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    
+    .table-of-contents li:active {
+        transform: scale(0.98);
+        transition: all 0.1s;
+    }
+}
+
+/* Print stillar */
+@media print {
+    .header {
+        display: none;
+    }
+    
+    .main-content {
+        margin-top: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    .bookmark-message {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+}
+
+/* Landscape orientatsiya */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .header {
+        height: 45px;
+    }
+    
+    .main-content {
+        margin-top: 65px;
+    }
+    
+    .nav-btn {
+        min-height: 28px;
+        min-width: 28px;
+        padding: 4px 6px;
+    }
+}
+/* Alfavit tugmasi uchun maxsus stil */
+#alphabetBtn {
+    background-color: var(--accent-color, #007bff);
+    color: white;
+    font-weight: bold;
+}
+
+.light-mode #alphabetBtn {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.light-mode #alphabetBtn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.dark-mode #alphabetBtn {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.book-mode #alphabetBtn {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
