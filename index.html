@@ -9,21 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <style>
- .website-counter {
-            background-color: #ff4957;
-            height: 50px;
-            width: 80px;
-            color: white;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 10px auto;
-        }
-
-
+ 
 
         /* Additional styles for index page */
         .sidebar {
@@ -216,43 +202,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     
-  <script>
-        const COUNT_URL = "https://api.countapi.xyz";
-        const NAMESPACE = "https://xushnid.github.io/hpbook"; // O‘z domeningizni yoki loyiha nomini kiriting
-        const KEY = "visits"; // Hisoblagich nomi
-        const counter = document.getElementById("visit-count");
-
-        // Joriy hisoblagich qiymatini olish
-        const getCount = async () => {
-            try {
-                const response = await fetch(`${COUNT_URL}/get/${NAMESPACE}/${KEY}`);
-                const data = await response.json();
-                counter.innerText = data.value;
-            } catch (error) {
-                console.error("Error fetching count:", error);
-            }
-        };
-
-        // Hisoblagichni oshirish
-        const incrementCount = async () => {
-            try {
-                const response = await fetch(`${COUNT_URL}/hit/${NAMESPACE}/${KEY}`);
-                const data = await response.json();
-                counter.innerText = data.value;
-            } catch (error) {
-                console.error("Error incrementing count:", error);
-            }
-        };
-
-        // Takroriy tashriflarni oldini olish uchun localStorage’dan foydalanish
-        if (localStorage.getItem("hasVisited") === null) {
-            incrementCount().then(() => {
-                localStorage.setItem("hasVisited", "true");
-            });
-        } else {
-            getCount();
-        }
-    </script>
+ 
 
 
     <script>
