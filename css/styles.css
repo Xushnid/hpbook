@@ -67,7 +67,7 @@ body {
     width: 95%;
     max-width: 550px; /* Tugmalar sig'adigan maksimal kenglik */
     height: 55px;
-    border-radius: 30px;
+    border-radius: 5px;
 }
 
 /* Ochish tugmasi */
@@ -113,7 +113,7 @@ body {
 
 .nav-group {
     display: flex;
-    gap: 3px;
+    gap: 5px;
     align-items: center;
 }
 
@@ -841,7 +841,109 @@ body {
     display: block; /* SVGning to'liq joyni egallashini ta'minlash */
 }
 
+/* styles.css faylida */
 
+/* === NAV-BTN UCHUN MEDIA SO'ROVLAR (MOBIL UCHUN) === */
+@media (max-width: 768px) { /* planshetlar va undan kichik ekranlar uchun */
+    #dynamicHeaderContainer {
+        top: 8px; /* Yuqoridan biroz kamroq joy qoldirish */
+        right: 8px; /* O'ngdan biroz kamroq joy qoldirish */
+        width: 42px; /* Kichikroq kenglik */
+        height: 42px; /* Kichikroq balandlik */
+    }
+
+    #headerToggleBtn {
+        width: 42px; /* Tugma o'lchamini konteynerga moslash */
+        height: 42px;
+        padding: 7px; /* Paddingni kamaytirish */
+    }
+
+    #headerToggleBtn svg {
+        width: 19px; /* Ikonka hajmini kichraytirish */
+        height: 19px;
+    }
+
+    /* Agar header-content ham mobil holatda o'zgarishi kerak bo'lsa */
+    .header-content {
+        width: 240px; /* Mobil holatda ochilgan panel kengligini kamaytirish */
+        padding: 12px; /* Paddingni kamaytirish */
+    }
+    .header-content .nav-btn { /* Panel ichidagi tugmalar */
+        padding: 9px; /* Paddingni kamaytirish */
+        font-size: 0.88em; /* Matn hajmini kichraytirish */
+    }
+    .header-content .nav-btn svg {
+        width: 19px;
+        height: 19px;
+    }
+}
+
+@media (max-width: 480px) { /* juda kichik ekranlar (telefonlar) uchun */
+    #dynamicHeaderContainer {
+        top: 5px; /* Yuqoridan yana ham kamroq joy */
+        right: 5px; /* O'ngdan yana ham kamroq joy */
+        width: 38px; /* Yana ham kichikroq kenglik */
+        height: 38px; /* Yana ham kichikroq balandlik */
+    }
+
+    #headerToggleBtn {
+        width: 38px;
+        height: 38px;
+        padding: 5px; /* Paddingni yana kamaytirish */
+    }
+
+    #headerToggleBtn svg {
+        width: 16px; /* Ikonka hajmini yana kichraytirish */
+        height: 16px;
+    }
+
+    .header-content {
+        width: 200px; /* Juda kichik ekranlar uchun panel kengligi */
+        padding: 8px; /* Paddingni yana kamaytirish */
+    }
+    .header-content .nav-btn {
+        padding: 7px;
+        font-size: 0.8em; /* Matn hajmini yana kamaytirish */
+    }
+    .header-content .nav-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Qo'shimcha ekstremal holatlar uchun (agar kerak bo'lsa) */
+@media (max-width: 375px) { /* iPhone SE / kichikroq telefonlar uchun */
+    #dynamicHeaderContainer {
+        top: 3px;
+        right: 3px;
+        width: 35px;
+        height: 35px;
+    }
+
+    #headerToggleBtn {
+        width: 35px;
+        height: 35px;
+        padding: 4px;
+    }
+
+    #headerToggleBtn svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .header-content {
+        width: 180px;
+        padding: 6px;
+    }
+    .header-content .nav-btn {
+        padding: 6px;
+        font-size: 0.75em;
+    }
+    .header-content .nav-btn svg {
+        width: 14px;
+        height: 14px;
+    }
+}
 
 
 
