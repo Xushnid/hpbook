@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitoblar Kolleksiyasi</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        /* Additional styles for index page */
+        .sidebar {
+            position: fixed;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar-btn {
+            display: block;
+            margin-bottom: 15px;
+            padding: 10px;
+            text-align: center;
+            background: none;
+            border: 1px solid #6c757d;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+        
+        .sidebar-btn:hover {
+            background-color: #e9ecef;
+        }
+        
+        .toggle-btn {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .content {
+            padding: 80px 20px 60px;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+        
+        .content.shifted {
+            margin-left: 250px;
+        }
+        
+        .book-carousel {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .book-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .book-item img:hover {
+            transform: scale(1.05);
+        }
+        
+        .book-title {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid #dee2e6;
+            z-index: 100;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .content.shifted {
+                margin-left: 0;
+            }
+            
+            .sidebar.active {
+                width: 200px;
+            }
+        }
+		
+		/* Music toggle button specific style */
+        .music-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body class="light-mode text-medium">
+
+<audio id="backgroundMusic" loop>
+        <source src="assets/audio/harry_potter.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+<!-- ✨ Sehrli fon qatlami -->
+    <div id="hpBg" class="hp-bg-wrapper"></div>
+    <!-- Sidebar Toggle Button -->
+<!-- YANGILANGAN DYNAMIC HEADER (SVG IKONKALAR BILAN) -->
+<div id="dynamicHeaderContainer">
+    <!-- Bu boshqaruv panelini ochadigan kichik tugma (o'ng tomonda) -->
+    <button id="headerToggleBtn" class="nav-btn">
+        <!-- Menu (Gamburger) ikonkasi -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <!-- Kengayganda paydo bo'ladigan asosiy panel -->
+    <div class="header-content">
+        <!-- Chap guruh -->
+        <div class="nav-group">
+         <div class="audio-controls-global">
+                <button class="nav-btn" id="globalAudioPlayPauseBtn" title="Musiqani o'ynatish/to'xtatish">
+                    <svg id="globalPlayIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-play"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    <svg id="globalPauseIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pause" style="display: none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                </button>
+            </div> 
+            
+        </div>
+                <!-- Markaziy guruh -->
+        <div class="nav-group">
+            
+            <button class="nav-btn" id="alphabetBtn" title="Alifboni o'zgartirish">
+                 <!-- Tarjima (Alphabet) ikonkasi -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22l4-12 4 12M6 16h4m5-11v11m2-11a4 4 0 0 1 0 8h-2m-3 3h5"></path></svg>
+            </button>
+           
+			<button class="nav-btn" id="themeBtn" title="Rejimni o'zgartirish">
+                <!-- Rejim (Palitra) ikonkasi -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+            </button>
+        </div>
+                <!-- O'ng guruh -->
+        <div class="nav-group">
+            
+            
+            <button class="nav-btn" id="closeHeaderBtn" title="Yopish">
+                <!-- Yopish (X) ikonkasi -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Main Content -->
+    <main class="content" id="mainContent">
+        <div class="book-carousel owl-carousel owl-theme">
+		 <div class="book-item">
+               <a href="book1/mundarija.html"> <img src="img/1.png" alt="Kitob 1">
+                <div class="book-title">Garri Potter va Falsafa Toshi</div></a>
+            </div>
+		           
+            <div class="book-item">
+                <a href=> <img src="img/2.png" alt="Kitob 2">
+                <div class="book-title">Garri Potter va Maxfiy Xona</div></a>
+            </div>
+            <div class="book-item">
+               <a href=> <img src="img/3.png" alt="Kitob 3">
+                <div class="book-title">Garri Potter va Azkaban Mahbusi</div></a>
+            </div>
+            <div class="book-item">
+                <a href=> <img src="img/4.png" alt="Kitob 4">
+                <div class="book-title">Garri Potter va Otash Jomi</div></a>
+            </div>
+            <div class="book-item">
+                <a href=> <img src="img/5.png"  alt="Kitob 5">
+                <div class="book-title">Garri Potter va Qaqnus Ordeni</div></a>
+            </div>
+            <div class="book-item">
+                <a href=> <img src="img/6.png"  alt="Kitob 6">
+                <div class="book-title">Garri Potter va Chalazod Shaxzoda</div></a>
+            </div>
+			 <div class="book-item">
+                <a href=> <img src="img/7.png"  alt="Kitob 7">
+                <div class="book-title">Garri Potter va Ajal Tuhfalari</div></a>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="copyright">
+            &copy; 2025 
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <!-- jQuery & Owl Carousel -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    
+    <script>
+        // Initialize Owl Carousel
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel({
+                items: 3,
+                loop: true,
+                center: true,
+                margin: 20,
+                nav: false,
+                dots: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            
+            // Sidebar toggle
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.getElementById('mainContent');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                mainContent.classList.toggle('shifted');
+            });
+            
+            // Home button functionality
+            document.getElementById('homeBtn').addEventListener('click', function() {
+                // You can add navigation logic here
+                alert('Bosh sahifadasiz');
+            });
+            
+            // About button functionality
+            document.getElementById('aboutBtn').addEventListener('click', function() {
+                // You can add navigation logic here
+                alert('Biz haqimizda ma\'lumot');
+            });
+        });
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/* === INDEX UCHUN SUZUVCHI IKONALAR ================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const wrap  = document.getElementById('hpBg');
+    if(!wrap) return;
+
+    const kinds = ['glasses','scar'];   // turdagi ikonalar
+    const COUNT = 18;                  // nechta ikonacha bo‘ladi
+
+    for(let i=0;i<COUNT;i++){
+        const icon = document.createElement('span');
+        icon.className = `hp-icon ${kinds[Math.random() < .5 ? 0 : 1]}`;
+
+        // Tasodifiy joy → 0–100 %
+        icon.style.top  = Math.random()*100 + '%';
+        icon.style.left = Math.random()*100 + '%';
+
+        // Boshlang‘ich burilish
+        icon.style.transform = `translate(-50%,-50%) rotate(${Math.random()*360}deg)`;
+
+        // Harakat davomiyligi va fazasini tasodifiy tanlash
+        const dur   = 20 + Math.random()*15;  // 20-35 s
+        const delay = -Math.random()*dur;     // yuklanish paytida “jonli” ko‘rinish
+        icon.style.animation = `hp-drift ${dur}s linear ${delay}s infinite alternate`;
+
+        wrap.appendChild(icon);
+    }
+});
+
+    </script>
+</body>
+</html>
