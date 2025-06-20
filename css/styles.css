@@ -64,7 +64,7 @@ body {
 
 /* Kengaygan holat */
 #dynamicHeaderContainer.expanded {
-    width: 95%;
+    width: 98%;
     max-width: 550px; /* Tugmalar sig'adigan maksimal kenglik */
     height: 55px;
     border-radius: 5px;
